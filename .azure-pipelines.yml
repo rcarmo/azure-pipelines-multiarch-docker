@@ -53,6 +53,5 @@ stages:
     steps:
         - script: |
             echo $(DOCKER_PASSWORD) | $(DOCKER) login --username $(DOCKER_USERNAME) --password-stdin
-            make setup-manifest
             make build-manifest
             make push-manifest
