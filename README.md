@@ -1,5 +1,11 @@
 # azure-pipelines-multiarch-docker
 
+[![Docker Stars](https://img.shields.io/docker/stars/insightful/ubuntu-gambit.svg)](https://hub.docker.com/r/insightful/ubuntu-gambit)
+[![Docker Pulls](https://img.shields.io/docker/pulls/insightful/ubuntu-gambit.svg)](https://hub.docker.com/r/insightful/ubuntu-gambit)
+[![](https://images.microbadger.com/badges/image/insightful/ubuntu-gambit.svg)](https://microbadger.com/images/insightful/ubuntu-gambit "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/insightful/ubuntu-gambit.svg)](https://microbadger.com/images/insightful/ubuntu-gambit "Get your own version badge on microbadger.com")
+[![Build Status](https://dev.azure.com/ruicarmo/insightfulsystems/_apis/build/status/rcarmo.azure-pipelines-multiarch-docker?branchName=master)](https://dev.azure.com/ruicarmo/insightfulsystems/_build/latest?definitionId=5&branchName=master)
+
 This is a shim/template repo for an Azure DevOps pipeline to build multi-architecture images:
 
 ## Pipeline Structure
