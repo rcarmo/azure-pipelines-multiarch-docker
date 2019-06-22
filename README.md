@@ -38,6 +38,12 @@ This is done because:
 * The actual architecture tagging (and mapping between different styles of architecture references) can be maintained inside the `Makefile`
 * Encapsulating that logic makes the CI YAML files considerably more readable
 
+## Projects Using This
+
+* [`insightful/alpine-node`](https://github.com/insightfulsystems/alpine-node)
+* [`insightful/ubuntu-gambit`](https://github.com/insightfulsystems/ubuntu-gambit)
+* [`insightful/ubuntu-gerbil`](https://github.com/insightfulsystems/ubuntu-gerbil)
+
 ## Caveats
 
 * This does not cover multi-OS (Linux/Windows) images--the principles are the same, but that needs to split on the CI side to allow for different stages inside different VM agents.
