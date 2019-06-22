@@ -32,8 +32,8 @@ This is done because:
 * The actual architecture tagging (and mapping between different styles of architecture references) can be maintained inside the `Makefile`
 * Encapsulating that logic makes the CI YAML files considerably more readable
 
-## Caveeats
+## Caveats
 
-* This does not cover multi-OS (Linux/Windows) images--the principles are the same, but that needs to split on the CI side to allow for different stages 
-* This only uses Docker Hub (and requires `DOCKER_USERNAME` and `DOCKER_PASSWORD` to be set as private global variables for the pipeline--I recommend using linked variables at the organization level)
-* This does _not_ use the built-in Docker actions in Azure Pipelines (because they do not support the experimental mode settings that are still required, as of June 2019, to build manifests)
+* This does not cover multi-OS (Linux/Windows) images--the principles are the same, but that needs to split on the CI side to allow for different stages inside different VM agents.
+* This only uses Docker Hub (and requires `DOCKER_USERNAME` and `DOCKER_PASSWORD` to be set as private global variables for the pipeline--I recommend using linked variables at the organization level).
+* This does _not_ use the built-in Docker actions in Azure Pipelines (because they do not _yet_ support the experimental mode settings that are still required, as of June 2019, to build manifests).
