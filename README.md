@@ -1,6 +1,15 @@
 # azure-pipelines-multiarch-docker
 
-This is a shim/template repo for a pipeline to build multi-architecture images. All it does is install `zsh` into a base Ubuntu image.
+This is a shim/template repo for an Azure DevOps pipeline to build multi-architecture images:
+
+## Pipeline Structure
+
+At the Azure Pipelines level, this creates:
+
+![stages](https://github.com/rcarmo/azure-pipelines-multiarch-docker/blob/master/img/stages.png?raw=true)
+
+* One independent stage for each CPU architecture
+* A "wrap-up" stage that runs after all the others that builds and publishes the Docker manifest file
 
 ## Why?
 
@@ -9,6 +18,8 @@ Because I needed a simple, re-usable example of how to build multi-architecture 
 ## How?
 
 Images are created atop a local base (in this case Ubuntu) with a corresponding `qemu-user-static` binary embedded, which allows most CI systems to build ARM images atop an `amd64` CPU.
+
+The sample `src/Dockerfile` only installs `zsh` into that image, but the intent is that you can build this up from there.
 
 ## Internals
 
@@ -20,15 +31,6 @@ This is done because:
 * It also allows for easy movement between different CI systems
 * The actual architecture tagging (and mapping between different styles of architecture references) can be maintained inside the `Makefile`
 * Encapsulating that logic makes the CI YAML files considerably more readable
-
-## Pipeline Structure
-
-At the Azure Pipelines level, this creates:
-
-![stages](https://github.com/rcarmo/azure-pipelines-multiarch-docker/blob/master/img/stages.png?raw=true)
-
-* One independent stage for each CPU architecture
-* A "wrap-up" stage that runs after all the others that builds and publishes the Docker manifest file
 
 ## Caveeats
 
