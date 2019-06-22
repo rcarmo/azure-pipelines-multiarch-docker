@@ -8,18 +8,24 @@ Because I needed a simple, re-usable example of how to build multi-architecture 
 
 ## How?
 
+Images are created atop a local base (in this case Ubuntu) with a corresponding `qemu-user-static` binary embedded, which allows most CI systems to build ARM images atop an `amd64` CPU.
+
+## Internals
+
 Most of the image generation logic (including embedding QEMU and building the final manifest that allows for automatic discovery of architecture-specific tags) lives inside the `Makefile`.
 
 This is done because:
 
-* It allows for easy local testing
-* It allows for easy movement between different CI systems
-* The actual architecture tagging (and mapping between different styles of architecture references) can be maintained inside the `Makefile` as simple logic
-* It makes the CI YAML files considerably more readable
+* Having a `Makefile` allows for easy local testing
+* It also allows for easy movement between different CI systems
+* The actual architecture tagging (and mapping between different styles of architecture references) can be maintained inside the `Makefile`
+* Encapsulating that logic makes the CI YAML files considerably more readable
 
-Images are created atop a local base (in this case Ubuntu) with a corresponding `qemu-user-static` binary embedded, which allows most CI systems to build ARM images atop an `amd64` CPU.
+## Pipeline Structure
 
 At the Azure Pipelines level, this creates:
+
+![stages](https://github.com/rcarmo/azure-pipelines-multiarch-docker/blob/master/img/stages.png?raw=true)
 
 * One independent stage for each CPU architecture
 * A "wrap-up" stage that runs after all the others that builds and publishes the Docker manifest file
